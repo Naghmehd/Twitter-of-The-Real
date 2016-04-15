@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   delete '/sign_out', to: 'sessions#destroy'
 
   resources :tweets
-  resources :users,  only: [:new, :create]
+  resources :users
 
   root 'home#dashboard'
 

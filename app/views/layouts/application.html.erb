@@ -10,13 +10,13 @@
 <body>
   <nav class='navbar navbar-default'>
     <div class="container-fluid">
-        <div class="navbar-header">
-          <%= link_to image_tag('images/twitter.png'), root_path %>
+        <div class="navbar-header links">
+          <%= link_to image_tag('twitter.png'), root_path %>
         </div>
 
-          <ul class="nav navbar-nav navbar">
+          <ul class="nav navbar-nav navbar pull-right">
             <% if signed_in? %>
-              <li> <%= link_to "Write a Tweet", new_post_path, class: "btn btn-default" %> </li>
+              <li> <%= link_to "Write a Tweet", new_tweet_path, class: "btn btn-default" %> </li>
               <li> <%= link_to "Sign Out", sign_out_path, method: :DELETE, class: "btn btn-danger" %> </li>
             <% else %>
               <li> <%= link_to "Sign In", sign_in_path, class: "btn btn-default navbar-btn js-login" %> </li>

@@ -2,10 +2,6 @@
   <h1>Tweets</h1>
   <p>See what’s happening right now.</p>
 
+  <%= render :partial => @tweets %>
 
-  <% @tweets.each do |tweet| %>
-    <div class='tweet'>
-      <%= link_to tweet.message, tweet, class: 'btn btn-default'%>
-    </div>
-  <% end %>
 </div>

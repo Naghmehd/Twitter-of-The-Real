@@ -18,7 +18,11 @@
     </div>
     <div class="field">
       <%= f.label :password %><br>
-      <%= f.text_field :password_digest %>
+      <%= f.password_field :password %>
+    </div>
+    <div>
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation %>
     </div>
     <div class="actions">
       <%= f.submit %>

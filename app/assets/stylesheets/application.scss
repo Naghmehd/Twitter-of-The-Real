@@ -21,14 +21,19 @@
 
 }
 
- .navbar-nav > li {
+.navbar-nav > li {
      float: left;
      margin-right: 20px;
-   }
+ }
 
-   .navbar-default .navbar-nav > li > a {
-    color: #444;
+.navbar-default .navbar-nav > li > a {
+  color: #444;
 
+}
+
+.navbar-header.links {
+  list-style: none;
+  float: left;
 }
 
 .tweet {
@@ -42,4 +47,8 @@
     margin: 15px;
     padding: 15px;
     width: 40em;
+}
+
+.btn.btn-default.box-btn {
+  border: none;
 }

@@ -10,7 +10,7 @@
   user = User.create!(username: Faker::Internet.user_name,
                       password: "password")
       3.times do
-        tweets = Tweet.create!(message: Faker::Lorem.sentences(1),
+        tweets = Tweet.create!(message: Faker::Lorem.sentences(1).join,
                               user_id: user.id)
       end
 end

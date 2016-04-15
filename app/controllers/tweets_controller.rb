@@ -4,7 +4,8 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = Tweet.all(:order => "created_at DEDC")
+    @tweets = Tweet.all
+
     respond_to do |format|
       format.html
     end
@@ -13,6 +14,9 @@ class TweetsController < ApplicationController
   # GET /tweets/1
   # GET /tweets/1.json
   def show
+    @tweets = set_tweet
+    @message = @tweets.message
+
   end
 
   # GET /tweets/new
@@ -28,6 +32,7 @@ class TweetsController < ApplicationController
   # POST /tweets.json
   def create
     @tweet = Tweet.create(tweet_params)
+    @tweet.user = @current_user
     respond_to do |format|
       if @tweet.save
         format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
@@ -55,13 +60,13 @@ class TweetsController < ApplicationController
 
   # DELETE /tweets/1
   # DELETE /tweets/1.json
-  # def destroy
-  #   @tweet.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to tweets_url, notice: 'Tweet was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  def destroy
+    @tweet.destroy
+    respond_to do |format|
+      format.html { redirect_to tweets_url, notice: 'Tweet was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
