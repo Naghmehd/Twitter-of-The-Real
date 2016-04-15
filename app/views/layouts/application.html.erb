@@ -2,11 +2,29 @@
 <html>
 <head>
   <title>Twitter</title>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class='navbar navbar-default'>
+    <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to image_tag('images/twitter.png'), root_path %>
+        </div>
+
+          <ul class="nav navbar-nav navbar">
+            <% if signed_in? %>
+              <li> <%= link_to "Write a Tweet", new_post_path, class: "btn btn-default" %> </li>
+              <li> <%= link_to "Sign Out", sign_out_path, method: :DELETE, class: "btn btn-danger" %> </li>
+            <% else %>
+              <li> <%= link_to "Sign In", sign_in_path, class: "btn btn-default navbar-btn js-login" %> </li>
+              <li> <%= link_to "Sign Up", new_user_path, class: "btn btn-default navbar-btn js-signup" %> </li>
+            <% end %>
+          </ul>
+      </div>
+  </nav>
 
 <%= yield %>
 

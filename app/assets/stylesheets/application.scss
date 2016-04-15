@@ -13,3 +13,33 @@
  *= require_tree .
  *= require_self
  */
+ @import 'bootstrap-sprockets';
+ @import 'bootstrap';
+
+.container-fluid {
+  background-color: #E5EAEE
+
+}
+
+ .navbar-nav > li {
+     float: left;
+     margin-right: 20px;
+   }
+
+   .navbar-default .navbar-nav > li > a {
+    color: #444;
+
+}
+
+.tweet {
+    border-bottom: 1px solid #e1e8ed;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #e1e8ed;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 15px;
+    padding: 15px;
+    width: 40em;
+}

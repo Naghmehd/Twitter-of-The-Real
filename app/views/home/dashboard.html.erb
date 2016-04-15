@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Tweets</h1>
+  <p>See what’s happening right now.</p>
+
+
+  <% @tweets.each do |tweet| %>
+    <div class='tweet'>
+      <%= link_to tweet.message, tweet, class: 'btn btn-default'%>
+    </div>
+  <% end %>
+</div>
