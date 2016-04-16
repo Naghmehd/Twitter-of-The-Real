@@ -1,7 +1,34 @@
 <div class="container">
+  <% if signed_in? %>
+  <h3>Hello <%=link_to current_user.username, user_path(current_user.id) %>!</h3>
+  <%end %>
   <h1>Tweets</h1>
   <p>See what’s happening right now.</p>
 
+  <section>
   <%= render :partial => @tweets %>
+  </section>
+
+  <section>
+  <%= hidden_field_tag  '@user_id', current_user.id %>
+  </section>
+
+  <section class='tweets'>
+    <h3>Tweets (<span id='tweet-count'><%= @tweets.count %></span>) <%= link_to "New Tweet", '#', class: 'btn btn-default', id: 'show-new-tweet' %></h3>
+    <hr />
+      <div id='new-tweet-form' >
+        <%= form_for(Tweet.new, remote: true) do |f| %>
+          <%= f.label :message %>
+          <%= f.text_field :message %>
+          <%= f.submit class: 'btn' %>
+        <% end %>
+      </div>
+    <hr />
+    <div id='tweet-storage'>
+      <% @tweets.each do |tweet| %>
+        <p><%= tweet.message %></p>
+      <% end %>
+    </div>
+  </section>
 
 </div>

@@ -16,11 +16,18 @@
  @import 'bootstrap-sprockets';
  @import 'bootstrap';
 
-.container-fluid {
-  background-color: #E5EAEE
-
+body {
+  @include gradient-vertical(#E1F5FE, #fff, 0%, 100%);
 }
 
+.container-fluid {
+  background-color: #E5EAEE;
+  padding: 6px;
+}
+
+.navbar.navbar-default {
+    border-bottom-color: #58AEE8;
+}
 .navbar-nav > li {
      float: left;
      margin-right: 20px;
@@ -51,4 +58,15 @@
 
 .btn.btn-default.box-btn {
   border: none;
+}
+
+navbar-header.links.img {
+  width: 50%;
+  margin-top: 10px;
+}
+
+.img-circle img {
+  width: 50%;
+  margin-top: 12px;
+  border-radius: 30%;
 }

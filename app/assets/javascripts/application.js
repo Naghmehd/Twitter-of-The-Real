@@ -14,3 +14,41 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+var ready = function () {
+    Tweets.start();
+
+    $("#show-new-tweet").on("click", function () {
+        $("#new-tweet-form").css({ display: "inherit" });
+    });
+//new comment auto check and refresh
+    var checkAndAddNewTweets = function () {
+        var user_id = $("#user-id").val(); // the .val() method in js returns the value of an input element.
+        if (user_id !== undefined && user_id !== null) {
+            var url = "/api/users/" + user_id;
+            $.getJSON(url, function (response) {
+                $("#tweet-storage").html("");
+                $("#tweet-count").html(response.tweets.length);
+                response.tweets.forEach(function (tweet) {
+                    $("#tweet-storage").append("<p>" + tweet.message + "</p>");
+                });
+            });
+        }
+    };
+
+    setInterval(function () {
+     checkAndAddNewTweets();
+ }, 1000);
+
+    var $newTweet = $("#new_tweet");
+    $newTweet.on("ajax:success", function(e, data) {
+        $newTweet.append("<p>" + data.message + "</p>");
+        $newTweet.find("#tweet_message").val("");
+    });
+    $newTweet.on("ajax:error", function(e, data) {
+        $newTweet.append("<p>" + data.message + "</p>");
+    });
+};
+
+$(document).ready(ready);
+$(document).on("page:load", ready);

@@ -6,11 +6,11 @@
 </p>
 
 <ol>
- <strong>Tweets:</strong>
+ <strong>Tweets (<%= @user.tweets.count %>):</strong>
  <% @user.tweets.each do |tweet| %>
    <li>Message: <%= tweet.message %> </li>
  <% end %>
 </ol>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Destroy', tweet_path, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', users_path %>

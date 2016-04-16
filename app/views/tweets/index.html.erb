@@ -2,6 +2,10 @@
 
   <p id="notice"><%= notice %></p>
 
+  <% if signed_in? %>
+  <h3>Hello <%=link_to current_user.username, user_path(current_user.id) %>!</h3>
+  <%end %>
+
   <h1>Listing Tweets</h1>
 
   <%= render :partial => @tweets %>

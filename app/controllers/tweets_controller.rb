@@ -5,10 +5,11 @@ class TweetsController < ApplicationController
   # GET /tweets.json
   def index
     @tweets = Tweet.all
-
     respond_to do |format|
-      format.html
+      format.html { redirect_to @tweets }
+      format.js
     end
+
   end
 
   # GET /tweets/1
@@ -16,6 +17,10 @@ class TweetsController < ApplicationController
   def show
     @tweets = set_tweet
     @message = @tweets.message
+    respond_to do |format|
+      format.html { redirect_to @tweets }
+      format.js
+    end
 
   end
 
@@ -31,18 +36,22 @@ class TweetsController < ApplicationController
   # POST /tweets
   # POST /tweets.json
   def create
-    @tweet = Tweet.create(tweet_params)
-    @tweet.user = @current_user
-    respond_to do |format|
-      if @tweet.save
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
-        format.json { render :show, status: :created, location: @tweet }
-      else
-        format.html { render :new }
-        format.json { render json: @tweet.errors, status: :unprocessable_entity }
-      end
-    end
+  #  @tweet = Tweet.new(tweet_params)
+  #  @tweet.user_id = current_user.id
+
+   @tweet = current_user.tweets.build(tweet_params)
+
+   respond_to do |format|
+       if @tweet.save
+         format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
+         format.json { render :show, status: :created, location: @tweet }
+       else
+         format.html { render :new }
+         format.json { render json: @tweet.errors, status: :unprocessable_entity }
+       end
+     end
   end
+
 
   # PATCH/PUT /tweets/1
   # PATCH/PUT /tweets/1.json
