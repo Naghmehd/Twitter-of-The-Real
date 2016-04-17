@@ -1,6 +1,7 @@
-<div class="container"
-
-  <p id="notice"><%= notice %></p>
+<div class="container">
+  <div>
+    <p id="notice"><%= notice %></p>
+  </div>
 
   <% if signed_in? %>
   <h3>Hello <%=link_to current_user.username, user_path(current_user.id) %>!</h3>
@@ -12,6 +13,5 @@
 
   <br>
 
-  <%= link_to 'New Tweet', new_tweet_path, class: "btn btn-default navbar-btn" %>
 
 </div>

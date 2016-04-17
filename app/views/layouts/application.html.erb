@@ -7,10 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class='navbar navbar-default'>
+  <nav class='navbar navbar-default navbar-fixed-top'>
     <div class="container-fluid">
         <div class="navbar-header links">
-          <%= link_to image_tag('twitter.png'), root_path,  class: "img-circle"%>
+          <%= link_to image_tag('twitter.png'), root_path %>
         </div>
 
           <ul class="nav navbar-nav navbar pull-right">
@@ -18,14 +18,14 @@
               <li> <%= link_to "Write a Tweet", new_tweet_path, class: "btn btn-default" %> </li>
               <li> <%= link_to "Sign Out", sign_out_path, method: :DELETE, class: "btn btn-danger" %> </li>
             <% else %>
-              <li> <%= link_to "Sign In", sign_in_path, class: "btn btn-default navbar-btn js-login" %> </li>
-              <li> <%= link_to "Sign Up", new_user_path, class: "btn btn-default navbar-btn js-signup" %> </li>
+              <li> <%= link_to "Sign In", sign_in_path, class: "btn btn-default navbar-btn" %> </li>
+              <li> <%= link_to "New User", new_user_path, class: "btn btn-default navbar-btn" %> </li>
             <% end %>
           </ul>
       </div>
   </nav>
-  <div class="container">
-<%= yield %>
+
+    <%= yield %>
   </div>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>

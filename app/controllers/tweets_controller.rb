@@ -4,10 +4,14 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    @tweets = Tweet.all
+    @tweets = Tweet.all.order(created_at: :desc)
     respond_to do |format|
-      format.html { redirect_to @tweets }
-      format.js
+      format.html do
+        @tweets
+      end
+      format.json do
+        render json: {tweets: @tweets}
+      end
     end
 
   end

@@ -1,19 +1,20 @@
 /* globals $ */
-
-var Tweets = {    //new comment auto check and refresh
-    checkAndAddNewComments: function () {
-        var user_id = $("#user-id").val(); // the .val() method in js returns the value of an input element.
-        if (user_id !== undefined && user_id !== null) {
-            var url = "/api/users/" + post_id;
-            $.getJSON(url, function (response) {
-                $("#tweet-storage").html("");
-                $("#tweet-count").html(response.tweets.length);
-                response.tweets.forEach(function (tweet) {
-                    $("#tweet-storage").append("<p>" + tweet.body + "</p>");
-                });
-            });
-        }
-    },
+window.addEventListener("load", function() {
+  var Tweets = {    //new comment auto check and refresh
+      checkAndAddNewTweets: function () {
+          var user_id = $("#user-id").val(); // the .val() method in js returns the value of an input element.
+          if (user_id !== undefined && user_id !== null) {
+              var url = "/api/users/" + user_id;
+              $.getJSON(url, function (response) {
+                  $("#tweet-storage").html("");
+                  $("#tweet-count").html(response.tweets.length);
+                  response.tweets.forEach(function (tweet) {
+                      $("#tweet-storage").append("<p>" + tweet.message + "</p>");
+                  });
+              });
+            }
+      }
+  },
 
     registerAjaxHandlers: function () {
         var $newTweet = $("#new_tweet");

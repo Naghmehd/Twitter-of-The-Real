@@ -1,6 +1,7 @@
 <div class='tweet'>
   <%= link_to tweet do %>
-    <p><b>Tweet <%=  time_ago_in_words(tweet.created_at) %> ago</b></p>
+    <p><b>Tweet <%=  time_ago_in_words(tweet.created_at)%> ago</b></p>
   <% end %>
   <p><%= tweet.message %></p>
+
 </div>

@@ -18,6 +18,15 @@
 
 body {
   @include gradient-vertical(#E1F5FE, #fff, 0%, 100%);
+  padding-top: 60px;
+  color: #444;
+}
+
+::selection {
+  background: transparent;
+}
+::-moz-selection {
+  background: transparent;
 }
 
 .container-fluid {
@@ -44,6 +53,7 @@ body {
 }
 
 .tweet {
+    display: block;
     border-bottom: 1px solid #e1e8ed;
     cursor: pointer;
     background-color: #fff;
@@ -53,9 +63,18 @@ body {
     box-sizing: border-box;
     margin: 15px;
     padding: 15px;
-    width: 40em;
+    width: auto;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+
 }
 
+.tweet :hover {
+  background-color: #cecece;
+}
+
+.tweet-link {
+  text-decoration: nonw;
+}
 .btn.btn-default.box-btn {
   border: none;
 }
@@ -65,8 +84,9 @@ navbar-header.links.img {
   margin-top: 10px;
 }
 
-.img-circle img {
+img {
   width: 50%;
-  margin-top: 12px;
+  margin-top: 6px;
   border-radius: 30%;
+  margin-left: 22px;
 }

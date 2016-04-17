@@ -2,33 +2,29 @@
   <% if signed_in? %>
   <h3>Hello <%=link_to current_user.username, user_path(current_user.id) %>!</h3>
   <%end %>
-  <h1>Tweets</h1>
   <p>See what’s happening right now.</p>
 
   <section>
-  <%= render :partial => @tweets %>
+  <%= hidden_field_tag :current_user_id, @user_id %>
+
   </section>
 
-  <section>
-  <%= hidden_field_tag  '@user_id', current_user.id %>
-  </section>
-
-  <section class='tweets'>
-    <h3>Tweets (<span id='tweet-count'><%= @tweets.count %></span>) <%= link_to "New Tweet", '#', class: 'btn btn-default', id: 'show-new-tweet' %></h3>
-    <hr />
-      <div id='new-tweet-form' >
-        <%= form_for(Tweet.new, remote: true) do |f| %>
-          <%= f.label :message %>
-          <%= f.text_field :message %>
-          <%= f.submit class: 'btn' %>
+  <section class="tweets">
+    <% if signed_in? %>
+      <div id= 'new-tweet-form', class='tweets' data-remote='true'>
+        <%= form_tag '/tweet', remote:true, class:"tweets", id:"new-tweet-form", method: :POST do %>
+        <%= text_field_tag :message, nil, class: "tweet-form", placeholder: "What are you thinking?", autofocus: true %>
+        <%= submit_tag "Share", class: "btn btn-default", id:"show-new-tweet" %>
         <% end %>
       </div>
+      <% end %>
+  </section>
+
     <hr />
     <div id='tweet-storage'>
-      <% @tweets.each do |tweet| %>
-        <p><%= tweet.message %></p>
-      <% end %>
+    <%= render :partial => @tweets %>
     </div>
   </section>
+</section>
 
 </div>
