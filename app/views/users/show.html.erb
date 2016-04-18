@@ -1,16 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+  <p>
+    <strong>Username:</strong>
+    <%= @user.username %>
+  </p>
 
-<ol>
- <strong>Tweets (<%= @user.tweets.count %>):</strong>
- <% @user.tweets.each do |tweet| %>
-   <li>Message: <%= tweet.message %> </li>
- <% end %>
-</ol>
+  <ol>
+   <strong>Tweets (<%= @user.tweets.count %>):</strong>
+   <% @user.tweets.each do |tweet| %>
+     <li>Message: <%= tweet.message %> </li>
+     <%= link_to 'Destroy', tweet_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+   <% end %>
+  </ol>
 
-<%= link_to 'Destroy', tweet_path, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', users_path %>
+  <%= link_to 'Back', root_path, class: "btn btn-default navbar-btn" %>
+</div>
